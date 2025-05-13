@@ -106,11 +106,16 @@ for (int i = 0; i < 3; i++)
     Console.WriteLine();
 }
 
-// Print max, min, sum, product of all numbers among ints and floats
-float min = ints[0];
-float max = 0;
-float sum = 0;
-float product = 1;
+// Print max, min, sum, product of all numbers in ints and floats
+int min = ints[0];
+int max = 0;
+int sum = 0;
+int product = 1;
+
+float fmin = floats[0,0];
+float fmax = 0;
+float fsum = 0;
+float fproduct = 1;
 
 for (int i = 0; i < ints.Length; i++)
 {
@@ -124,17 +129,23 @@ for (int i = 0; i < 3; i++)
 {
     for (int j = 0; j < 4; j++)
     {
-        if (floats[i, j] < min) min = floats[i, j];
-        if (floats[i, j] > max) max = floats[i, j];
-        sum += floats[i, j];
-        product *= floats[i, j];
+        if (floats[i, j] < fmin) fmin = floats[i, j];
+        if (floats[i, j] > fmax) fmax = floats[i, j];
+        fsum += floats[i, j];
+        fproduct *= floats[i, j];
     }
 }
 Console.WriteLine();
-Console.WriteLine($"Max value = {max}");
-Console.WriteLine($"Min value = {min}");
-Console.WriteLine($"Sum of the numbers = {sum}");
-Console.WriteLine($"Product of the numbers = {product}");
+Console.WriteLine($"Max value in ints = {max}");
+Console.WriteLine($"Min value in ints = {min}");
+Console.WriteLine($"Sum of the numbers in ints = {sum}");
+Console.WriteLine($"Product of the numbers in ints = {product}");
+
+Console.WriteLine();
+Console.WriteLine($"Max value in floats = {fmax}");
+Console.WriteLine($"Min value in floats = {fmin}");
+Console.WriteLine($"Sum of the numbers in floats = {fsum}");
+Console.WriteLine($"Product of the numbers in floats = {fproduct}");
 
 // Print sum of even numbers in ints
 int evenSum = 0;
@@ -155,6 +166,6 @@ for (int i = 0; i < 3; i++)
 }
 
 Console.WriteLine();
-Console.WriteLine($"Sum of numbers in odd columns: {oddColumnSum}");
+Console.WriteLine($"Sum of numbers in odd columns (floats): {oddColumnSum}");
     
 #endregion
