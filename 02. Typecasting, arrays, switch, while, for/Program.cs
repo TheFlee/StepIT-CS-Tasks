@@ -64,23 +64,19 @@
 #endregion
 
 #region Task 4
+using System;
+
 int[] ints = new int[5];
 float[,] floats = new float[3,4];
 
+// Filling ints with user input numbers
 for (int i = 0; i < ints.Length; i++)
 {
     Console.Write($"ints[{i}] = ");
     ints[i] = Convert.ToInt32(Console.ReadLine());
 }
-Console.WriteLine();
 
-Console.Write("ints array = ");
-for (int i = 0;i < ints.Length; i++)
-{
-    Console.Write($"{ints[i]} ");
-}
-Console.WriteLine();
-
+// Filling floats with random float numbers
 Random rnd = new Random();
 for (int i = 0;i < 3; i++)
 {
@@ -90,13 +86,75 @@ for (int i = 0;i < 3; i++)
     }
 }
 
-Console.Write("floats array = ");
+// Print ints in one line
+Console.WriteLine();
+Console.Write("ints array = ");
+for (int i = 0; i < ints.Length; i++)
+{
+    Console.Write($"{ints[i]} ");
+}
+Console.WriteLine();
+
+// Print flaots table shaped
+Console.WriteLine("floats array: ");
 for (int i = 0; i < 3; i++)
 {
     for (int j = 0; j < 4; j++)
     {
-        Console.Write($"{floats[i, j]} ");
+        Console.Write($"{floats[i, j]} \t");
     }
     Console.WriteLine();
-} 
+}
+
+// Print max, min, sum, product of all numbers among ints and floats
+float min = ints[0];
+float max = 0;
+float sum = 0;
+float product = 1;
+
+for (int i = 0; i < ints.Length; i++)
+{
+    if (ints[i] < min) min = ints[i];
+    if (ints[i] > max) max = ints[i];
+    sum += ints[i];
+    product *= ints[i]; 
+}
+
+for (int i = 0; i < 3; i++)
+{
+    for (int j = 0; j < 4; j++)
+    {
+        if (floats[i, j] < min) min = floats[i, j];
+        if (floats[i, j] > max) max = floats[i, j];
+        sum += floats[i, j];
+        product *= floats[i, j];
+    }
+}
+Console.WriteLine();
+Console.WriteLine($"Max value = {max}");
+Console.WriteLine($"Min value = {min}");
+Console.WriteLine($"Sum of the numbers = {sum}");
+Console.WriteLine($"Product of the numbers = {product}");
+
+// Print sum of even numbers in ints
+int evenSum = 0;
+foreach (int num in ints) if (num % 2 == 0) evenSum += num;
+
+Console.WriteLine();
+Console.WriteLine($"Sum of even numbers in ints: {evenSum}");
+
+// Print sum of numbers in odd columns
+float oddColumnSum = 0;
+
+for (int i = 0; i < 3; i++)
+{
+    for (int j = 0; j < 4; j++)
+    {
+        if (j % 2 == 0) oddColumnSum += floats[i, j];
+    }
+}
+
+Console.WriteLine();
+Console.WriteLine($"Sum of numbers in odd columns: {oddColumnSum}");
+    
 #endregion
